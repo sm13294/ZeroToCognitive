@@ -26,6 +26,7 @@ var cookieParser = require('cookie-parser');
 var cfenv = require('cfenv');
 
 var vcapServices = require('vcap_services');
+// var watson = require('watson-developer-cloud');
 
 var appEnv = cfenv.getAppEnv();
 var app = express();

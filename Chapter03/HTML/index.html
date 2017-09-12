@@ -1,64 +1,84 @@
-<html><head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Chapter 3, writing your first Bluemix App">
-    <meta name="author" content="Bob Dill, IBM Distinguished Engineer">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Learn Bluemix Now!</title>
+        <title>Parallel Programming Assistant - PPA</title>
 
-     </head><body class="tutorial" onLoad="initPage()">
-        <div class="cover">
-            <div class="navbar">
-                <div class="container" >
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse" style="background-color: #E0E0E0">
-                            <span class="sr-only" >Toggle navigation</span>
-                            <span class="icon-bar" ></span>
-                            <span class="icon-bar" ></span>
-                            <span class="icon-bar" ></span>
-                        </button>
-                        <a class="navbar-brand" href="#" style="color: #008571;"><span>Zero to Cognitive Tutorial</span></a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active">
-                                <a href="#">Home</a>
-                            </li>
-                        </ul>
-                    </div>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- Styles -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </head>
+    <body class="tutorial" onLoad="initPage()">
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="container clearfix">
+                    <div class="chat">
+                        <div class="chat-history">
+                            <ul class="chat-ul">
+                                <li>
+                                    <div class="message-data">
+                                        <span class="message-data-name"><i class="fa fa-circle you"></i> You</span>
+                                    </div>
+                                    <div class="message you-message">
+                                        Hi
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="message-data align-right">
+                                        <span class="message-data-name">PPA, your Parallel Programming Assistant</span> <i class="fa fa-circle me"></i>
+                                    </div>
+                                    <div class="message me-message float-right"> Hi,   </div>
+                                </li>
+                            </ul>
+                        </div> <!-- end chat-history -->
+                        <!-- <div class="input"> -->
+                            <form class="form-inline">
+                                <div class="form-group col-11">
+                                    <label for="speech">Type your question here:</label>
+                                    <textarea class="form-control" id="speech" style="min-width: 100%" rows="3"></textarea>
+                                </div>
+                                <div class="form-group col-1">
+                                    <button type="button" class="btn btn-info btn-circle btn-xl mic_start"><i class="fa fa-microphone" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info btn-circle btn-xl mic_stop" style="display:none;"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
+                                </div>
+                            </form>
+
+                            <form class="form-inline">
+                                <div class="form-group col-11">
+                                    <label for="read">Type the text you want watson to read:</label>
+                                    <textarea class="form-control" id="read" style="min-width: 100%" rows="3">Hello Watson. How are you?</textarea>
+                                </div>
+                                <div class="form-group col-1">
+                                    <button type="button" class="btn btn-info btn-circle btn-xl watson_play"><i class="fa fa-play" aria-hidden="true"></i></button>
+                                </div>
+                            </form>
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="audioParent">
+                                  <audio class="audio" id="a_player">Your browser does not support the audio element.</audio>
+                                </div>
+                              </div>
+                            </div>
+                        <!-- </div> -->
+                    </div> <!-- end chat -->
                 </div>
             </div>
-            <div class="container", id="top" >
-              <div class="app_container" id="body">
-                <div class="row">
-                    <div class="col-md-6 text-center" style="color: #008571; ">
-                        <h1>Chapter 3: Creating your first Watson app</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <br/>
-                    <div class="col-md-6"><center><img id="microphone" src="icons/microphone.png"> ... <img id="stop" src="icons/stop.png"></center></div>
-                    <br/>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                      <center><div cols="50" class="speech-only" id="speech" readonly wrap="soft" >Spoken output goes here</div></center>
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-
-          </div>
-
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/watson-speech.js"></script>
-    <script src="js/z2c-speech.js"></script>
-    <link href="CSS/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="CSS/pageStyles.css" rel="stylesheet" type="text/css">
-
-		</body></html>
+        </div>
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/watson-speech.js"></script>
+        <script src="js/z2c-speech.js"></script>
+        <link href="CSS/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="CSS/pageStyles.css" rel="stylesheet" type="text/css">
+        <link href="CSS/chat.css" rel="stylesheet" type="text/css">
+    </body>
+</html>
