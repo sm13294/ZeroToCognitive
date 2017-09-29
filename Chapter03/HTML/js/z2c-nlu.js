@@ -15,6 +15,8 @@
 */
 
 var
+_analyze_text                   = $('.watson_analyze'),
+_form_reset                     = $('.form_reset'),
 _analyze_paper_abstract         = $("#paper-abstract"),
 _analyze_paper_keywords         = $("#paper-keywords"),
 _analyze_paper_title            = $("#paper-title"),
@@ -66,6 +68,10 @@ function initAdminPage ()
             _alert.removeClass('d-none');
         }
     });
+
+    _form_reset.on('click', function() {
+        clear();
+    })
 }
 
 function getNLUResponse()
@@ -247,5 +253,8 @@ function getSynonyms(_word){
 }
 
 function clear(){
+    _analyze_paper_title.val("");
+    _analyze_paper_authors.val("");
     _analyze_paper_abstract.val("");
+    _analyze_paper_keywords.val("");
 }

@@ -17,7 +17,6 @@
 var _mic_start          = $('.mic_start'),
 _mic_stop               = $('.mic_stop'),
 _read_text              = $('.watson_play'),
-_analyze_text           = $('.watson_analyze'),
 _create_entity          = $('.watson_create_entity')
 _input                  = $("#speech"),
 _target_speech          = $(".mySpeech"),
