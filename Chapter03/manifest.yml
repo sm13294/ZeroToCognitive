@@ -8,4 +8,5 @@ applications:
   disk_quota: 1024M
   services:
     - Speech to Text-oy
-    - Text to Speech-a2 
+    - Text to Speech-a2
+    - Conversation-r1

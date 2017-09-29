@@ -41,25 +41,31 @@
                         </div> <!-- end chat-history -->
                         <!-- <div class="input"> -->
                             <form class="form-inline">
-                                <div class="form-group col-11">
-                                    <label for="speech">Type your question here:</label>
+                                <div class="form-group col-10">
+                                    <label for="speech">Type your question here (press enter to submit):</label>
+                                    <span class="mySpeech "></span>
                                     <textarea class="form-control" id="speech" style="min-width: 100%" rows="3"></textarea>
                                 </div>
                                 <div class="form-group col-1">
                                     <button type="button" class="btn btn-info btn-circle btn-xl mic_start"><i class="fa fa-microphone" aria-hidden="true"></i></button>
                                     <button type="button" class="btn btn-info btn-circle btn-xl mic_stop" style="display:none;"><i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
                                 </div>
+                                <div class="form-group col-1">
+                                    Autoplay:
+                                    <input type="checkbox" class="autoplay" data-toggle="toggle" data-style="android" data-onstyle="info" data-width="40" data-on="<i class='fa fa-play' aria-hidden='true'></i>" data-off="<i class='fa fa-stop' aria-hidden='true'></i>">
+
+                                </div>
                             </form>
 
-                            <form class="form-inline">
+                            <!-- <form class="form-inline">
                                 <div class="form-group col-11">
-                                    <label for="read">Type the text you want watson to read:</label>
-                                    <textarea class="form-control" id="read" style="min-width: 100%" rows="3">Hello Watson. How are you?</textarea>
+                                    <label for="read">Type the text you want watson to analyze:</label>
+                                    <textarea class="form-control" id="analyze" style="min-width: 100%" rows="3">Overheads due to synchronisation and loop scheduling are an important factor in determining the performance of shared memory parallel programs. We present set of benchmarks to measure these classes of overhead for language constructs in OpenMP. Results are presented for three different hardware platforms, each with its own implementation of OpenMP. Significant differences are observed, which suggest possible means of improving performance.</textarea>
                                 </div>
                                 <div class="form-group col-1">
-                                    <button type="button" class="btn btn-info btn-circle btn-xl watson_play"><i class="fa fa-play" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info btn-circle btn-xl watson_analyze"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
                                 </div>
-                            </form>
+                            </form> -->
                             <div class="row">
                               <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="audioParent">
@@ -76,9 +82,14 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/watson-speech.js"></script>
         <script src="js/z2c-speech.js"></script>
+        <script src="js/z2c-conversation.js"></script>
+        <script src="js/z2c-nlu.js"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <link href="CSS/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="CSS/pageStyles.css" rel="stylesheet" type="text/css">
         <link href="CSS/chat.css" rel="stylesheet" type="text/css">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
     </body>
 </html>
